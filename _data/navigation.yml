@@ -1,0 +1,60 @@
+# main links
+main:
+#  - title: "Quick-Start Guide"
+#    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+#  - title: "Posts"
+#    url: /archive/
+  - title: "워크벤치 개발"
+    url: /workbench/analyzerguide1/
+  - title: "워크벤치 이벤트"
+    url: /workbench/event/handshake/
+  - title: "Tags"
+    url: /tags/
+  - title: "Categories"
+    url: /categories/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+  # - title: "Sitemap"
+  #   url: /sitemap/
+
+#Workbench guide
+workbench:
+  - title: "워크벤치 분석기 개발"
+    children:
+      - title: "프로젝트 생성"
+        url: /workbench/analyzerguide1/
+      - title: "프로젝트 기본 설정"
+        url: /workbench/analyzerguide2/
+      - title: "스크립트 단위의 뷰 설정"
+        url: /workbench/analyzerguide3/
+      - title: "이벤트 처리"
+        url: /workbench/analyzerguide4/
+      - title: "초기값 설정"
+        url: /workbench/analyzerguide5/
+      - title: "파일 탐색기 설정"
+        url: /workbench/analyzerguide6/
+      - title: "이벤트 처리 함수"
+        url: /workbench/analyzerguide7/
+      - title: "공용 함수"
+        url: /workbench/analyzerguide8/
+
+#Workbench event
+workbenchevent:
+  - title: "워크벤치 이벤트"
+    children:
+      - title: "HANDSHAKE"
+        url: /workbench/event/handshake/
+      - title: "REGISTERED"
+        url: /workbench/event/registered/
+      - title: "REQUEST DATA"
+        url: /workbench/event/requestdata/
+      - title: "RESPONSE DATA"
+        url: /workbench/event/responsedata/
+      - title: "LOAD DATA"
+        url: /workbench/event/loaddata/
+      - title: "INITIALIZE DATA"
+        url: /workbench/event/initialize/
+      - title: "REQUEST OUTPUT VIEW DATA"
+        url: /workbench/event/requestoutputview/
+      - title: "DATA CHANGED"
+        url: /workbench/event/datachanged/

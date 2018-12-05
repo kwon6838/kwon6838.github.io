@@ -1,0 +1,687 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.12.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>분석기 구조 설명 - 개발자 매뉴얼</title>
+<meta name="description" content="EDISON 플랫폼에서 워크벤치와 연동되는 분석기는 모듈 단위로 개발 될 수 있으며, 각 모듈은 Liferay 포틀릿으로 구분됩다.각 포틀릿에서 생성된 가시화 및 서비스 등은 EDISON 플랫폼에서 제공되는 서비스와 연동되어 개발될 수 있습니다.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="개발자 매뉴얼">
+<meta property="og:title" content="분석기 구조 설명">
+<meta property="og:url" content="http://localhost:4000/workbench/analyzerguide4/">
+
+
+  <meta property="og:description" content="EDISON 플랫폼에서 워크벤치와 연동되는 분석기는 모듈 단위로 개발 될 수 있으며, 각 모듈은 Liferay 포틀릿으로 구분됩다.각 포틀릿에서 생성된 가시화 및 서비스 등은 EDISON 플랫폼에서 제공되는 서비스와 연동되어 개발될 수 있습니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/profileyejin.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2018-09-02T09:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/workbench/analyzerguide4/">
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "http://localhost:4000/assets/images/profileyejin.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Yejin Kwon",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="개발자 매뉴얼 Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">개발자 매뉴얼</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/workbench/analyzerguide1/" >워크벤치 개발</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/workbench/event/handshake/" >워크벤치 이벤트</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/tags/" >Tags</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/categories/" >Categories</a>
+            </li>
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;">워크벤치 분석기 개발</h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">워크벤치 분석기 개발</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide1/" class="">프로젝트 생성</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide2/" class="">프로젝트 기본 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide3/" class="">스크립트 단위의 뷰 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide4/" class="active">이벤트 처리</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide5/" class="">초기값 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide6/" class="">파일 탐색기 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide7/" class="">이벤트 처리 함수</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide8/" class="">공용 함수</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="분석기 구조 설명">
+    <meta itemprop="description" content="EDISON 플랫폼에서 워크벤치와 연동되는 분석기는 모듈 단위로 개발 될 수 있으며, 각 모듈은 Liferay 포틀릿으로 구분됩다.각 포틀릿에서 생성된 가시화 및 서비스 등은 EDISON 플랫폼에서 제공되는 서비스와 연동되어 개발될 수 있습니다.">
+    <meta itemprop="datePublished" content="September 02, 2018">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">분석기 구조 설명
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 분 소요
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#분석기와-edison-연동-시스템-구조">분석기와 EDISON 연동 시스템 구조</a></li>
+  <li><a href="#분석기-이벤트-처리-부분">분석기 이벤트 처리 부분</a></li>
+  <li><a href="#데이터-처리-부분">데이터 처리 부분</a></li>
+  <li><a href="#데이터-처리를-위해-정의가-필요한-함수">데이터 처리를 위해 정의가 필요한 함수</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>EDISON 플랫폼에서 워크벤치와 연동되는 분석기는 모듈 단위로 개발 될 수 있으며, 각 모듈은 Liferay 포틀릿으로 구분됩다.
+각 포틀릿에서 생성된 가시화 및 서비스 등은 EDISON 플랫폼에서 제공되는 서비스와 연동되어 개발될 수 있습니다.</p>
+
+<h3 id="분석기와-edison-연동-시스템-구조">분석기와 EDISON 연동 시스템 구조</h3>
+<p>EDSION 워크벤치 시뮬레이션 시스템과 연동되는 시스템 구조는 다음 그림과 같이 표현될 수 있습니다.</p>
+
+<p><img src="/assets/images/analyzerguide1/analyzer architecture.png" alt="imagetestYejin" title="연동 구조" /><br /></p>
+
+<p>분석기는 전체 이벤트를 처리하는 이벤트 처리부분과 내부적으로 데이터를 가시화하고 분석 할 수 있는 Analyzer 구현 부분으로 나눠질 수 있습니다.</p>
+
+<p>EDISON 플랫폼에서 파생되는 이벤트를 받아들이고 적절한 시기에 사용자에게 데이터 분석을 위한 툴을 제공하는 부분을 포함하고 있습니다.</p>
+
+<p>따라서 EDISON 워크벤치와 연동되는 분석기 모듈을 개발하기 위해서는 이벤트를 처리하는 부분과 실제 데이터 가시활르 위한 부분을 나눠서 개발을 해야 합니다.</p>
+
+<h3 id="분석기-이벤트-처리-부분">분석기 이벤트 처리 부분</h3>
+<p>워크벤치의 분석기를 개발 하는데 있어 이벤트를 처리하는 부분은 자바 스크립트로 이루어져 있으며, Liferay 포틀릿 기반으로 이벤트를 받아들입니다.</p>
+
+<p>다음 예제 코드는 워크벤치가 실행되면서 분석기를 호출하고 이에 대한 응답을 하는 코드입니다.
+Liferay 에서 제공하는 <code class="highlighter-rouge">Liferay.fire()</code>함수와 <code class="highlighter-rouge">Liferay.on()</code>기반으로 이벤트 프로세싱을 제공합니다.</p>
+
+<ul>
+  <li>샘플 예제
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Liferay</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span>
+	<span class="nx">OSP</span><span class="p">.</span><span class="nx">Event</span><span class="p">.</span><span class="nx">OSP_HANDSHAKE</span><span class="p">,</span>
+	<span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">myId</span> <span class="o">=</span> <span class="s1">'&lt;%=portletDisplay.getId()%&gt;'</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span> <span class="nx">e</span><span class="p">.</span><span class="nx">targetPortlet</span> <span class="o">!==</span> <span class="nx">myId</span> <span class="p">){</span>
+			<span class="k">return</span>
+		<span class="p">}</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'[NGLViewer]OSP_HANDSHAKE: ['</span><span class="o">+</span><span class="nx">e</span><span class="p">.</span><span class="nx">portletId</span><span class="o">+</span><span class="s1">', '</span><span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span><span class="o">+</span><span class="s1">']'</span><span class="p">);</span>
+		<span class="o">&lt;</span><span class="nx">portlet</span><span class="p">:</span><span class="nx">namespace</span><span class="o">/&gt;</span><span class="nx">connector</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">portletId</span><span class="p">;</span>
+
+		<span class="k">if</span><span class="p">(</span> <span class="nx">e</span><span class="p">.</span><span class="nx">mode</span> <span class="p">)</span>
+			<span class="o">&lt;</span><span class="nx">portlet</span><span class="p">:</span><span class="nx">namespace</span><span class="o">/&gt;</span><span class="nx">action</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">mode</span><span class="p">;</span>
+		<span class="k">else</span>
+			<span class="o">&lt;</span><span class="nx">portlet</span><span class="p">:</span><span class="nx">namespace</span><span class="o">/&gt;</span><span class="nx">action</span> <span class="o">=</span> <span class="s1">'VIEW'</span><span class="p">;</span>
+		<span class="kd">var</span> <span class="nx">events</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="nx">OSP</span><span class="p">.</span><span class="nx">Event</span><span class="p">.</span><span class="nx">OSP_EVENTS_REGISTERED</span><span class="p">,</span>
+			<span class="nx">OSP</span><span class="p">.</span><span class="nx">Event</span><span class="p">.</span><span class="nx">OSP_LOAD_DATA</span>
+		<span class="p">];</span>
+		<span class="kd">var</span> <span class="nx">eventData</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="na">portletId</span><span class="p">:</span> <span class="nx">myId</span><span class="p">,</span>
+			<span class="na">targetPortlet</span><span class="p">:</span> <span class="o">&lt;</span><span class="na">portlet</span><span class="p">:</span><span class="nx">namespace</span><span class="o">/&gt;</span><span class="nx">connector</span><span class="p">,</span>
+			<span class="na">data</span><span class="p">:</span> <span class="nx">events</span>
+      <span class="p">};</span>
+      <span class="nx">Liferay</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span> <span class="nx">OSP</span><span class="p">.</span><span class="nx">Event</span><span class="p">.</span><span class="nx">OSP_REGISTER_EVENTS</span><span class="p">,</span> <span class="nx">eventData</span> <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">Liferay.fire()</code> : 이벤트를 발생시키는 Liferay 자바스크립트 라이브러리 함수입니다.</li>
+  <li><code class="highlighter-rouge">Liferay.on()</code> : 이벤트를 리스닝 하는 Liferay 자바스크립트 라이브러리 함수입니다.</li>
+</ul>
+
+<h3 id="데이터-처리-부분">데이터 처리 부분</h3>
+
+<p>실제 서버에서 계산과학공학 시뮬레이션이 실행되고 결과 값을 분석하기 위해서는 시뮬레이션 결과를 호출하고 적절한 데이터를 받아 가시화 하는 데이터 처리 구현 부분입니다.
+계산 결과 데이터를 수신하고 가시화 하기 위해서는 데이터 호출 및 응답에 대한 코드 구현이 필수적입니다.</p>
+
+<p>이미 이전 단계에서 추가한 OSP 라이브러리를 기반으로 데이터를 호출하고 적절한 데이터를 받는 코드 부분이 구현 되어야 합니다.</p>
+
+<p>이러한 데이터를 구현하기 위해서는 다양한 스크립트 함수들이 필요하며, 해당 함수들을 순차대로 정리하면 다음과 같습니다.</p>
+
+<h3 id="데이터-처리를-위해-정의가-필요한-함수">데이터 처리를 위해 정의가 필요한 함수</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">함수명</th>
+      <th style="text-align: left">정의</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">loadXXXXFile(OSPInputData)</td>
+      <td style="text-align: left">실제 서버 사이드의 파일을 읽어오는 방법에 대한 정의<br />Output 포트의  path  타입에 따라 케이스를 나눠 처리 방법에 대한 정의가 되어 있음<br /> 폴더/확장자/파일</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">getFirstFileName(OSPInputData)</td>
+      <td style="text-align: left">결과 포트의 path  타일이 폴더 또는 확장자인 경우, 해당 폴더 내 첫번째 파일을 읽어오는 역할이 정의</td>
+    </tr>
+  </tbody>
+</table>
+
+<p rules="groups" class="notice--info"><strong>데이터 처리 방법</strong> <br /> 서버에서 시뮬레이션 결과로 생성된 결과 데이터는 OSP 라이브러리를 이용하여 전송받을 수 있으며, 해당 데이터를 받은 다음 iframe 으로 연결된 실제 데이터 가시봐 부분에 데이터를 전공하는 방법으로 분석기가 동작하게 됩니다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#analyzer" class="page__taxonomy-item" rel="tag">analyzer</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#edisonworkbench" class="page__taxonomy-item" rel="tag">edisonworkbench</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#workbench" class="page__taxonomy-item" rel="tag">workbench</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2018-09-02T09:00:00+09:00">September 02, 2018</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%B6%84%EC%84%9D%EA%B8%B0+%EA%B5%AC%EC%A1%B0+%EC%84%A4%EB%AA%85%20http%3A%2F%2Flocalhost%3A4000%2Fworkbench%2Fanalyzerguide4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fworkbench%2Fanalyzerguide4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fworkbench%2Fanalyzerguide4%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fworkbench%2Fanalyzerguide4%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/workbench/event/datachanged/" class="pagination--pager" title="REQUEST DATA CHANGED EVENT
+">이전</a>
+    
+    
+      <a href="/workbench/analyzerguide5/" class="pagination--pager" title="초기값 설정
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/workbench/analyzerguide8/" rel="permalink">공용 함수
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 분 소요
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">공용함수
+이벤트에 대한 응답이나 데이터를 처리하고 실제 가시화를 하기 위한 공용 함수들이 필요합니다. 예를 들어 워크벤치와 연동되어 시뮬레이션을 수행할 때, 시뮬레이션이 종료되고 결과를 확인하기 위해서는 워크벤치에서 데이터를 로드하라는 OSP_LOAD_DATA 이벤트를 분석기에 보...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/workbench/analyzerguide7/" rel="permalink">이벤트 처리 함수
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 분 소요
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">이벤트 처리
+개발하려는 분석기는 Liferay 에서 제공하는 이벤트 전송 및 수신 함수(Liferay.on(), Liferay.fire())를 사용하여 워크벤치와 연동하여 동작합니다. 자바 스크립트 단위로 동작을 하기 때문에 개발하려는 분석기 내에 필요한 이벤트를 처리하고 발생시키...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/workbench/analyzerguide6/" rel="permalink">파일 탐색기 설정
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 분 소요
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">파일 메뉴 설정
+기본적으로 분석기를 EDISON 워크벤치와 연동을 하면서 필요한 파일 메뉴는 3가지 입니다. 현재 대부분의 워크벤치와 연동된 파일 메뉴는 로컬 파일 불러오기, 서버 파일 불러오기, 현재 파일 다운로드하기 가 있습니다.
+이러한 파일 메뉴와 더불어 실제 파일을 불러와 ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/workbench/analyzerguide5/" rel="permalink">초기값 설정
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 분 소요
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">EDISON 워크벤치와 연동을 하며 워크벤치에서 요구하는 이벤트를 처리하기 위해서는 기본적으로 셋팅이 완료되어야 하는 몇 가지 초기 값이 있습니다.
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+    
+    
+    
+      <li><a href="https://github.com/kwon6838"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Yejin Kwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/workbench/analyzerguide4/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/workbench/Analyzer-Development-Guide-4"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://edisonworkbench.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+  </body>
+</html>

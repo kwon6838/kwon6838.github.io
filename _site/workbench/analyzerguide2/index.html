@@ -1,0 +1,709 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.12.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>프로젝트 기본 설정 - 개발자 매뉴얼</title>
+<meta name="description" content="EDISON 워크벤치 기반 분석기(Post-Processor) 개발 매뉴얼 입니다.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="개발자 매뉴얼">
+<meta property="og:title" content="프로젝트 기본 설정">
+<meta property="og:url" content="http://localhost:4000/workbench/analyzerguide2/">
+
+
+  <meta property="og:description" content="EDISON 워크벤치 기반 분석기(Post-Processor) 개발 매뉴얼 입니다.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/profileyejin.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2018-08-27T09:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/workbench/analyzerguide2/">
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "http://localhost:4000/assets/images/profileyejin.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Yejin Kwon",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="개발자 매뉴얼 Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">개발자 매뉴얼</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/workbench/analyzerguide1/" >워크벤치 개발</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/workbench/event/handshake/" >워크벤치 이벤트</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/tags/" >Tags</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/categories/" >Categories</a>
+            </li>
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;">워크벤치 분석기 개발</h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">워크벤치 분석기 개발</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide1/" class="">프로젝트 생성</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide2/" class="active">프로젝트 기본 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide3/" class="">스크립트 단위의 뷰 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide4/" class="">이벤트 처리</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide5/" class="">초기값 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide6/" class="">파일 탐색기 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide7/" class="">이벤트 처리 함수</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/workbench/analyzerguide8/" class="">공용 함수</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="프로젝트 기본 설정">
+    <meta itemprop="description" content="EDISON 워크벤치 기반 분석기(Post-Processor) 개발 매뉴얼 입니다.">
+    <meta itemprop="datePublished" content="August 27, 2018">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">프로젝트 기본 설정
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 분 소요
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#java-코드-추가-1-파일-관리">Java 코드 추가 1 (파일 관리)</a></li>
+  <li><a href="#java-코드-추가-2-워크벤치-공유-변수">Java 코드 추가 2 (워크벤치 공유 변수)</a></li>
+  <li><a href="#java-코드-라이브러리-확인">Java 코드 라이브러리 확인</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>EDISON 워크벤치 기반 분석기(Post-Processor) 개발 매뉴얼 입니다.</p>
+
+<p>Liferay 6.2.5 포틀릿 기반으로 개발 하는 방법에 대해 순차적으로 설명 되어 있습니다.</p>
+
+<h2 id="java-코드-추가-1-파일-관리">Java 코드 추가 1 (파일 관리)</h2>
+<p>생성된 프로젝트에서 포틀릿 클래스에 파일 전송 및 파일 다운로드 등을 위한 자바 코드를 추가 합니다. <code class="highlighter-rouge">MVCPortlet</code>을 <code class="highlighter-rouge">extends</code> 하게 되면 그 중 미리 선언되어 있는 <code class="highlighter-rouge">serveResource</code> 함수를 오버라이딩 하면 됩니다.
+해당 코드는 수정할 필요없이 그대로 개발중인 프로젝트에 넣기만 하면됩니다. 이전 프로젝트 생성 부분에서 <a href="/assets/OSPLibrary/SciencePlatform-hook-service.jar">SciencePlatform-hook-service.jar</a>라이브러리를 추가했다면 다음 자바 코드를 문제없이 호출할 수 있습니다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">serveResource</span><span class="o">(</span><span class="n">ResourceRequest</span> <span class="n">resourceRequest</span><span class="o">,</span> <span class="n">ResourceResponse</span> <span class="n">resourceResponse</span><span class="o">)</span>
+    <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">PortletException</span><span class="o">{</span>
+    <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">ParamUtil</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="s">"fileName"</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">parentPath</span> <span class="o">=</span> <span class="n">ParamUtil</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="s">"parentPath"</span><span class="o">);</span>
+    <span class="n">Path</span> <span class="n">filePath</span> <span class="o">=</span> <span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">parentPath</span><span class="o">).</span><span class="na">resolve</span><span class="o">(</span><span class="n">fileName</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">command</span> <span class="o">=</span> <span class="n">ParamUtil</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="s">"command"</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">repositoryType</span> <span class="o">=</span> <span class="n">ParamUtil</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="s">"repositoryType"</span><span class="o">,</span> <span class="n">OSPRepositoryTypes</span><span class="o">.</span><span class="na">USER_JOBS</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+    <span class="k">if</span><span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"GET_FILE"</span><span class="o">)){</span>
+        <span class="k">try</span><span class="o">{</span>
+        	<span class="n">OSPFileUtil</span><span class="o">.</span><span class="na">getFile</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="n">resourceResponse</span><span class="o">,</span> <span class="n">filePath</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">repositoryType</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">PortalException</span> <span class="o">|</span> <span class="n">SystemException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">_log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"[JSMOL] readFileContent(): "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">PortletException</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"READ_IMAGE"</span><span class="o">)){</span>
+        <span class="k">try</span><span class="o">{</span>
+        	<span class="n">OSPFileUtil</span><span class="o">.</span><span class="na">getFile</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="n">resourceResponse</span><span class="o">,</span> <span class="n">filePath</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">repositoryType</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">PortalException</span> <span class="o">|</span> <span class="n">SystemException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">_log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"[JSMOL] readFileContent(): "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">PortletException</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"READ_FIRST_FILE"</span><span class="o">)){</span>
+        <span class="k">try</span><span class="o">{</span>
+        	<span class="n">OSPFileUtil</span><span class="o">.</span><span class="na">readFirstFileContent</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="n">resourceResponse</span><span class="o">,</span> <span class="n">parentPath</span><span class="o">,</span> <span class="n">fileName</span><span class="o">,</span> <span class="n">repositoryType</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">PortalException</span> <span class="o">|</span> <span class="n">SystemException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">_log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"[JSMOL] readFileContent(): "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">PortletException</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"GET_FIRST_FILE_NAME"</span><span class="o">)){</span>
+        <span class="k">try</span><span class="o">{</span>
+        	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[JSMOL] test get firstFileName"</span><span class="o">);</span>
+        	<span class="n">OSPFileUtil</span><span class="o">.</span><span class="na">getFirstFileName</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="n">resourceResponse</span><span class="o">,</span> <span class="n">parentPath</span><span class="o">,</span> <span class="n">fileName</span><span class="o">,</span> <span class="n">repositoryType</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">PortalException</span> <span class="o">|</span> <span class="n">SystemException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">_log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"[JSMOL] getFirstFileName(): "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">PortletException</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="s">"DOWNLOAD_FILE"</span><span class="o">)){</span>
+        <span class="k">try</span><span class="o">{</span>
+        	<span class="n">OSPFileUtil</span><span class="o">.</span><span class="na">downloadFile</span><span class="o">(</span><span class="n">resourceRequest</span><span class="o">,</span> <span class="n">resourceResponse</span><span class="o">,</span> <span class="n">filePath</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">repositoryType</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">PortalException</span> <span class="o">|</span> <span class="n">SystemException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">_log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"[JSMOL] checkValidFile(): "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">PortletException</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+        <span class="n">_log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Un-known command: "</span> <span class="o">+</span> <span class="n">command</span><span class="o">);</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">PortletException</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="java-코드-추가-2-워크벤치-공유-변수">Java 코드 추가 2 (워크벤치 공유 변수)</h2>
+<p>워크벤치 실행을 위해 필요한 기본 값들을 설정하기 위한 자바 코드를 추가합니다. 워크벤치에서 개발하고 있는 분석기를 이용하여 시뮬레이션 환경을 구성할 때 필수적으로 확인하는 변수들의 값을 기본값으로 설정하는 부분입니다. 마찬가지로 <code class="highlighter-rouge">MVCPortlet</code>을 <code class="highlighter-rouge">extends</code> 하게 되면 그 중 미리 선언되어 있는 <code class="highlighter-rouge">doView</code> 함수를 오버라이딩 하면 됩니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">doView</span><span class="o">(</span><span class="n">RenderRequest</span> <span class="n">renderRequest</span><span class="o">,</span> <span class="n">RenderResponse</span> <span class="n">renderResponse</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">PortletException</span><span class="o">{</span>
+  <span class="kt">boolean</span> <span class="n">eventEnable</span> <span class="o">=</span> <span class="n">ParamUtil</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">(</span><span class="n">renderRequest</span><span class="o">,</span> <span class="s">"eventEnable"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+  <span class="n">String</span> <span class="n">inputData</span> <span class="o">=</span> <span class="n">ParamUtil</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">renderRequest</span><span class="o">,</span> <span class="s">"inputData"</span><span class="o">);</span>
+  <span class="n">String</span> <span class="n">connector</span> <span class="o">=</span> <span class="n">ParamUtil</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">renderRequest</span><span class="o">,</span> <span class="s">"connector"</span><span class="o">,</span> <span class="s">"connector"</span><span class="o">);</span>
+  <span class="n">String</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">ParamUtil</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">renderRequest</span><span class="o">,</span> <span class="s">"mode"</span><span class="o">,</span> <span class="s">"VIEW"</span><span class="o">);</span>
+
+  <span class="n">renderRequest</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"eventEnable"</span><span class="o">,</span> <span class="n">eventEnable</span><span class="o">);</span>
+  <span class="n">renderRequest</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"inputData"</span><span class="o">,</span> <span class="n">inputData</span><span class="o">);</span>
+  <span class="n">renderRequest</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"connector"</span><span class="o">,</span> <span class="n">connector</span><span class="o">);</span>
+  <span class="n">renderRequest</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"mode"</span><span class="o">,</span> <span class="n">mode</span><span class="o">);</span>
+
+  <span class="kd">super</span><span class="o">.</span><span class="na">doView</span><span class="o">(</span><span class="n">renderRequest</span><span class="o">,</span> <span class="n">renderResponse</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>지금까지 기본적인 java 소스 코드를 추가하였습니다. 해당 소스코드는 워크벤치와 연동 될 때, 파일 관리와 기본 변수 값을 체크하기 위해 필요한 부분입니다. 기본적으로 필요한 자바 소스코드 외에는 추가할 필요가 없는 부분이니 그냥 소소코드를 생성된 자바 파일에 복사해서 붙여넣기만 하면 됩니다.</p>
+
+<p class="notice--info"><strong>로그 변수 선언</strong> <br />생성된 자바 파일 안에서 시스템에 필요한 로그를 선언하기 위해 변수를 선언할 필요가 있습니다.<br /><code class="highlighter-rouge">private static Log _log = LogFactoryUtil.getLog(TestAnalyzerPortlet.class);</code>
+<br />해당 변수는 위와 같이 선언하며, 생성된 자바 포틀릿 클래스 명에 따라 클래스 명(<code class="highlighter-rouge">TestAnalyzerPortlet.class</code>)이 달라집니다.</p>
+
+<h2 id="java-코드-라이브러리-확인">Java 코드 라이브러리 확인</h2>
+<p>위의 절차에 따라 자바 소스 코드들을 추가하였다면, 라이브러리들을 해당 클레스에 import 해야 합다.</p>
+
+<p>사용되는 클래스 라이브러리들은 아래와 같으니 동일한 이름의 다른 라이브러리를 호출하지 않도록 주의해야 합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Path</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Paths</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.portlet.PortletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.portlet.RenderRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.portlet.RenderResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.portlet.ResourceRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.portlet.ResourceResponse</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.kisti.osp.constants.OSPRepositoryTypes</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.kisti.osp.service.FileManagementLocalServiceUtil</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.kisti.osp.util.OSPFileUtil</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.liferay.portal.kernel.exception.PortalException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.liferay.portal.kernel.exception.SystemException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.liferay.portal.kernel.log.Log</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.liferay.portal.kernel.log.LogFactoryUtil</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.liferay.portal.kernel.util.ParamUtil</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.liferay.util.bridges.mvc.MVCPortlet</span><span class="o">;</span>
+
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#analyzer" class="page__taxonomy-item" rel="tag">analyzer</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#edisonworkbench" class="page__taxonomy-item" rel="tag">edisonworkbench</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#workbench" class="page__taxonomy-item" rel="tag">workbench</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2018-08-27T09:00:00+09:00">August 27, 2018</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8+%EA%B8%B0%EB%B3%B8+%EC%84%A4%EC%A0%95%20http%3A%2F%2Flocalhost%3A4000%2Fworkbench%2Fanalyzerguide2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fworkbench%2Fanalyzerguide2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Flocalhost%3A4000%2Fworkbench%2Fanalyzerguide2%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fworkbench%2Fanalyzerguide2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/workbench/analyzerguide1/" class="pagination--pager" title="프로젝트 생성
+">이전</a>
+    
+    
+      <a href="/workbench/analyzerguide3/" class="pagination--pager" title="스크립트 단위의 뷰 설정
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/workbench/analyzerguide8/" rel="permalink">공용 함수
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 분 소요
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">공용함수
+이벤트에 대한 응답이나 데이터를 처리하고 실제 가시화를 하기 위한 공용 함수들이 필요합니다. 예를 들어 워크벤치와 연동되어 시뮬레이션을 수행할 때, 시뮬레이션이 종료되고 결과를 확인하기 위해서는 워크벤치에서 데이터를 로드하라는 OSP_LOAD_DATA 이벤트를 분석기에 보...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/workbench/analyzerguide7/" rel="permalink">이벤트 처리 함수
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 분 소요
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">이벤트 처리
+개발하려는 분석기는 Liferay 에서 제공하는 이벤트 전송 및 수신 함수(Liferay.on(), Liferay.fire())를 사용하여 워크벤치와 연동하여 동작합니다. 자바 스크립트 단위로 동작을 하기 때문에 개발하려는 분석기 내에 필요한 이벤트를 처리하고 발생시키...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/workbench/analyzerguide6/" rel="permalink">파일 탐색기 설정
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 분 소요
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">파일 메뉴 설정
+기본적으로 분석기를 EDISON 워크벤치와 연동을 하면서 필요한 파일 메뉴는 3가지 입니다. 현재 대부분의 워크벤치와 연동된 파일 메뉴는 로컬 파일 불러오기, 서버 파일 불러오기, 현재 파일 다운로드하기 가 있습니다.
+이러한 파일 메뉴와 더불어 실제 파일을 불러와 ...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/workbench/analyzerguide5/" rel="permalink">초기값 설정
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 분 소요
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">EDISON 워크벤치와 연동을 하며 워크벤치에서 요구하는 이벤트를 처리하기 위해서는 기본적으로 셋팅이 완료되어야 하는 몇 가지 초기 값이 있습니다.
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+    
+    
+    
+      <li><a href="https://github.com/kwon6838"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Yejin Kwon. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/workbench/analyzerguide2/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/workbench/Analyzer-Development-Guide-2"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://edisonworkbench.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+  </body>
+</html>
